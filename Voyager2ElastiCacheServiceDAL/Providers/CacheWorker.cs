@@ -11,6 +11,7 @@ namespace CacheServiceDAL.Providers
     /// <summary>
     /// For usage required keys in app.config/web.config file :    <add key="CacheServiceAddress" value="localhost" /> - server address, could be multiple seperated with ','
     ///                                                           <add key="ConnectionPort" value="6379"/>  -> connection port , default 6379
+    /// See example at https://github.com/antonk7/CachingServiceDAL
     /// </summary>
     public class CacheWorker
     {
