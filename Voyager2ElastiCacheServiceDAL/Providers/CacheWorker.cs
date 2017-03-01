@@ -8,17 +8,15 @@ using CacheServiceDAL.Models;
 
 namespace CacheServiceDAL.Providers
 {
+    /// <summary>
+    /// For usage required keys in app.config/web.config file :    <add key="CacheServiceAddress" value="localhost" /> - server address, could be multiple seperated with ','
+    ///                                                           <add key="ConnectionPort" value="6379"/>  -> connection port , default 6379
+    /// </summary>
     public class CacheWorker
     {
 
         private CacheServiceProvider cacheProvider;
 
-        //public CacheWorker(int userId, string siteMode)
-        //{
-        //    this.siteMode = siteMode;
-        //    cacheProvider = CacheService.Instance.Provider;
-        //    cacheProvider.Connect(userId);
-        //}
 
         /// <summary>
         /// Creates an object to interact with the caching service 
@@ -31,12 +29,6 @@ namespace CacheServiceDAL.Providers
             this.cacheProvider = cacheProvider;
             cacheProvider.Connect(userId);
         }
-
-        //public CacheWorker(IUnitOfWork unitOfWork)
-        //{
-        //    cacheProvider = CacheService.Instance.Provider;
-        //    cacheProvider.Connect();
-        //}
 
         /// <summary>
         /// Deletes all of the cached data in the caching service
@@ -170,26 +162,6 @@ namespace CacheServiceDAL.Providers
             bool checkOperationResult = cacheProvider.DoesKeyExists<T>();
             return checkOperationResult;
         }
-
-        //private static IEnumerable<string> GetAllAvailableClaims()
-        //{
-        //    string permissions = typeof(PermissionClaimModelExtended).FullName;
-        //    string access = typeof(UserFullActiveAccess).FullName;
-
-        //    string allMenu = typeof(UserAllMenuState).FullName;
-        //    string realMenu = typeof(UserRealMenuState).FullName;
-        //    string testMenu = typeof(UserTestMenuState).FullName;
-
-        //    List<string> allAvailableFeatures = new List<string>();
-
-        //    allAvailableFeatures.Add(permissions);
-        //    allAvailableFeatures.Add(access);
-        //    allAvailableFeatures.Add(allMenu);
-        //    allAvailableFeatures.Add(realMenu);
-        //    allAvailableFeatures.Add(testMenu);
-
-        //    return allAvailableFeatures;
-        //}
 
         /// <summary>
         /// Save a user claim for the connected user

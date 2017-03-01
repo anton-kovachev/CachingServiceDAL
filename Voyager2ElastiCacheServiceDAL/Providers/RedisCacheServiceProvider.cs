@@ -33,7 +33,18 @@ namespace CacheServiceDAL.Providers
             cacheServiceAddresses = appSettingsReader.GetValue("CacheServiceAddress", typeof(string)).ToString();
 
             string[] cacheServiceAddressesSplit = cacheServiceAddresses.Split(',');
+
             int defaultConnectionPort = 6379;
+
+            try
+            {
+                defaultConnectionPort = Int32.Parse(appSettingsReader.GetValue("ConnectionPort", typeof(string)).ToString());
+            }
+            catch(Exception ex)
+            {
+                defaultConnectionPort = 6379;
+            }
+         
 
             foreach(string cacheServiceAddress in cacheServiceAddressesSplit)
             {
