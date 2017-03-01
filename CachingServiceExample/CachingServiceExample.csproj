@@ -51,7 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Voyager2ElastiCacheServiceDAL\CacheServiceDAL.csproj">
+    <ProjectReference Include="..\ElastiCacheServiceDAL\CacheServiceDAL.csproj">
       <Project>{9b871a3d-9eb5-459a-b559-3b238aa9e4f5}</Project>
       <Name>CacheServiceDAL</Name>
     </ProjectReference>
