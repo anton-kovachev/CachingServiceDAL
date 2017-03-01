@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CachingServiceExample
@@ -35,8 +36,20 @@ namespace CachingServiceExample
             //Lock operation described by model in cache -> creates a cache entry that expires with time set in the model
             cacheWorker.LockResourceInCacheWithExpiration<ValidateDatabaseLockModel>();
 
+            bool doesLockModelExists = cacheWorker.DoesKeyExist<ValidateDatabaseLockModel>();
+            Console.WriteLine("Lock key exists : ? {0} ", doesLockModelExists);
+
+            int sixtyOneSecondsInMilliseconds = 61 * 1000;
+            Thread.Sleep(sixtyOneSecondsInMilliseconds);
+
+            doesLockModelExists = cacheWorker.DoesKeyExist<ValidateDatabaseLockModel>();
+
+            Console.WriteLine("Lock key exists : ? {0} ", doesLockModelExists);
+
             Action lockResource = cacheWorker.LockResourceInCacheWithExpirationAction<DefaultRolePermissionsLockModel>();
             lockResource();
+
+            cacheWorker.UnLockResourceInCacheWithExpiration<DefaultRolePermissionsLockModel>();
         }
     }
 }

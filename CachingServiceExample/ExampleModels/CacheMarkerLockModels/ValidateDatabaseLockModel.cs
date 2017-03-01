@@ -9,7 +9,7 @@ namespace CachingServiceExample.ExampleModels.CacheMarkerLockModels
 {
     public class ValidateDatabaseLockModel : BasicLockModel
     {
-        private const int expirationTimeInMinutes = 30;
+        private const int expirationTimeInMinutes = 1;
         public override int ExpirationInMinutes
         {
             get { return expirationTimeInMinutes; }
